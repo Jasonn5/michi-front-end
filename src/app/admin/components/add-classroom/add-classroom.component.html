@@ -1,0 +1,32 @@
+<div class="row">
+    <app-sidebar class="col-md-3"></app-sidebar>
+    <div class="col-md-9">
+        <div class="contenedorCuerpo pt-5" id="contenidoPrincipal">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h2><b>Añadir Ambiente</b></h2>
+                                <input type="text" [(ngModel)]="classRoom.name" placeholder="Nombre">
+                                <select [(ngModel)]="classRoom.type" class="form-control"
+                                    style="margin-bottom: 1.5rem;">
+                                    <option [value]=1>Aula</option>
+                                    <option [value]=2>Laboratorio</option>
+                                    <option [value]=3>Auditorio</option>
+                                </select>
+                                <input type="number" [(ngModel)]="classRoom.capacity" placeholder="Capacidad">
+                                <div class="col-md-12 text-center">
+                                    <button class="btn btn-primary" [disabled]="classRoom.capacity<1"
+                                        (click)="saveChanges()">Guardar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

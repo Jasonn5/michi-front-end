@@ -1,0 +1,34 @@
+<!--Barra Lateral derecha-->
+<div class="row">
+    <app-sidebar class="col-md-3"></app-sidebar>
+    <div class="col-md-9">
+        <div class="contenedorCuerpo" id="contenidoPrincipal">
+            <div class="row p-5">
+                <div class="card" style="width: 100%;">
+                    <div class="card-body">
+                        <h2 style="color: #0099EE;"><strong>Limite de reserva de ambientes</strong></h2>
+                        <div class="pt-3">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label><strong>Limite de reserva mínimo: </strong></label>
+                                    <input type="number" [(ngModel)]="minimun" class="mx-2">
+                                </div>
+                                <div class="col-md-3">
+                                    <label><strong>Limite de reserva máximo: </strong></label>
+                                    <input type="number" [(ngModel)]="maximum" class="mx-2">
+                                </div>
+                                <div class="col-md-4">
+                                    <textarea cols="42" rows="3" [(ngModel)]="reason" placeholder="Motivo:"></textarea>
+                                </div>
+                                <div class="col-md-2">
+                                    <button class="btn btn-primary" style="width: 100%;" (click)="saveChanges()">Guardar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Etiqueta hr modificada para hacer linea de division de contenedor de izquierda y derecha-->
+</div>

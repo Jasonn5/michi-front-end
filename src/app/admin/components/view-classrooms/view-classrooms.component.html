@@ -1,0 +1,36 @@
+<!--Barra Lateral derecha-->
+<div class="row">
+    <app-sidebar class="col-md-3"></app-sidebar>
+    <div class="col-md-9">
+        <div class="contenedorCuerpo" id="contenidoPrincipal">
+            <div class="row py-3 pr-3">
+                <div class="col-md-10"></div>
+                <div class="col-md-2"><button class="btn btn-add-classroom" (click)="addClassroom()">Añadir Aula</button></div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="container">
+                        <ul class="responsive-table">
+                            <li class="table-header row">
+                                <div style="float: left;width: 20%; text-align: center;">
+                                    <input type="text" class="search" placeholder="Nombre" #searchRef>
+                                </div>
+                                <div style="float: left;width: 30%; text-align: center;">Tipo</div>
+                                <div style="float: left;width: 20%; text-align: center;">Capacidad <img style="cursor:pointer" src="../../../../assets/img/up.png" width="15" (click)="orderByCapacity(true)"><img style="cursor:pointer" src="../../../../assets/img/down.png" width="20" (click)="orderByCapacity(false)"></div>
+                                <div style="float: left;width: 20%; text-align: center;">Editar</div>
+                                <div style="float: left;width: 10%; text-align: center;"><button class="btn btn-primary" (click)="listActives()">{{textButton}}</button></div>
+                            </li>
+                            <li class="table-row row " *ngFor="let classroom of classrooms">
+                                <div style="float: left;width: 20%; text-align: center;">{{classroom.name}}</div>
+                                <div style="float: left;width: 27%; text-align: center;">{{classroom.type | classroomType }}</div>
+                                <div style="float: left;width: 27%; text-align: center;">{{classroom.capacity}}</div>
+                                <div style="float: left;width: 20%; text-align: left; cursor: pointer;" (click)="edit(classroom)"><img src="../../../../assets/img/edit.png" width="20"></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Etiqueta hr modificada para hacer linea de division de contenedor de izquierda y derecha-->
+</div>

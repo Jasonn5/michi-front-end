@@ -1,0 +1,48 @@
+<!--Aqui viene el cuerpo de la pagina-->
+<!--Barra Lateral izquierda-->
+<div *ngIf="!isAdmin">
+    <div class="row" routerLink="/add-reservation">
+        <div class="col-md-4">
+            <img src="./assets/img/mas.png" height="50px" style="margin: 18px;">
+        </div>
+        <div class="col-md-8 text-sidebar">Nueva Reserva</div>
+    </div>
+    <div class="row" routerLink="/view-reservations">
+        <div class="col-md-4">
+            <img src="./assets/img/view.png" height="50px" style="margin: 18px;">
+        </div>
+        <div class="col-md-8 text-sidebar">Ver Reservas</div>
+    </div>
+</div>
+<div *ngIf="isAdmin">
+    <div class="row" routerLink="/customize">
+        <div class="col-md-4">
+            <img src="./assets/img/mas.png" height="50px" style="margin: 18px;">
+        </div>
+        <div class="col-md-8 text-sidebar">Configuración</div>
+    </div>
+    <div class="row" routerLink="/view-customizes">
+        <div class="col-md-4">
+            <img src="./assets/img/view.png" height="50px" style="margin: 18px;">
+        </div>
+        <div class="col-md-8 text-sidebar">Ver Configuraciones</div>
+    </div>
+    <div class="row" routerLink="/view-classrooms">
+        <div class="col-md-4">
+            <img src="./assets/img/view.png" height="50px" style="margin: 18px;">
+        </div>
+        <div class="col-md-8 text-sidebar">Ver Ambientes</div>
+    </div>
+    <div class="row" routerLink="/view-reservations-by-admin">
+        <div class="col-md-4">
+            <img src="./assets/img/view.png" height="50px" style="margin: 18px;">
+        </div>
+        <div class="col-md-8 text-sidebar">Ver Docentes</div>
+    </div>
+    <div class="row" routerLink="/view-all-reservation">
+        <div class="col-md-4">
+            <img src="./assets/img/view.png" height="50px" style="margin: 18px;">
+        </div>
+        <div class="col-md-8 text-sidebar">Ver Reservas</div>
+    </div>
+</div>

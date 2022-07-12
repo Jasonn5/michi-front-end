@@ -1,0 +1,27 @@
+<!--Barra Lateral derecha-->
+<div class="row">
+    <app-sidebar class="col-md-3"></app-sidebar>
+    <div class="col-md-9">
+        <div class="contenedorCuerpo" id="contenidoPrincipal">
+            <div class="row p-5">
+                <div class="container">
+                    <ul class="responsive-table">
+                        <li class="table-header row">
+                            <div class="col-3">Fecha</div>
+                            <div class="col-3">Minimo</div>
+                            <div class="col-3">Maximo</div>
+                            <div class="col-3">Motivo</div>
+                        </li>
+                        <li class="table-row row " *ngFor="let customize of customizes">
+                            <div style="float: left;width: 25%;">{{customize.dateOfCustom | date:'shortDate' }}</div>
+                            <div style="float: left;width: 25%;">{{customize.minimum}}</div>
+                            <div style="float: left;width: 25%;">{{customize.maximum}}</div>
+                            <div style="float: left;width: 25%;">{{customize.reason}}</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Etiqueta hr modificada para hacer linea de division de contenedor de izquierda y derecha-->
+</div>

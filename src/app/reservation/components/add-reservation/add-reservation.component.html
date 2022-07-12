@@ -1,0 +1,282 @@
+<!--Barra Lateral derecha-->
+<div class="row">
+    <app-sidebar class="col-md-3"></app-sidebar>
+    <div class="col-md-9">
+        <div class="contenedorCuerpo pt-5" id="contenidoPrincipal">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <div class="card" *ngIf="isPartOne">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label><strong>Reservante:</strong></label>
+                                            </div>
+                                            <div class="col-md-9 pl-4">
+                                                <input type="text" disabled style="width: 100%;"
+                                                    [value]="proffesorSelected?.firstName">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label><strong>Necesidad:</strong></label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <select style="width: 100%;"
+                                                    (change)="selectPriority($event.target.value)">
+                                                    <option value="1">Normal</option>
+                                                    <option value="2">Urgente</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="row pt-3">
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label><strong>Reserva:</strong></label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <select style="width: 100%;" (change)="isShared($event.target.value)">
+                                                    <option value="1">Personal</option>
+                                                    <option value="2">Compartida</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label><strong>Necesidad:</strong></label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <select style="width: 100%;"
+                                                    (change)="selectPriority($event.target.value)">
+                                                    <option value="1">Nornal</option>
+                                                    <option value="2">Urgente</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> -->
+                                <div class="row text-center pt-3">
+                                    <div class="col-md-12">
+                                        <label><strong>{{reserveLimit}}</strong></label>
+                                    </div>
+                                </div>
+                                <div class="row pt-3">
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label><strong>Periodos:</strong></label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <select style="width: 100%;"
+                                                    (change)="selectPeriod($event.target.value)">
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class=" row">
+                                            <div class="col-md-1"></div>
+                                            <div class="input-group-append col-md-3">
+                                                <button class="btn btn-outline-secondary" (click)="d1.toggle()"
+                                                    type="button" style="width: 95%; height: 2.5rem;" *ngIf="!isUrgent">
+                                                    <img src="../../../../assets/img/calendar.png">
+                                                </button>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input class="form-control" placeholder="dd-mm-yyyy"
+                                                    [(ngModel)]="startDate" ngbDatepicker #d1="ngbDatepicker"
+                                                    readonly="readonly" container="body" style="width: 100%;"
+                                                    (ngModelChange)="selectDate()">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row pt-3" *ngIf="isShare">
+                                    <div class="col-md-8">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label><strong>Docentes:</strong></label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <select style="width: 100%;"
+                                                    (change)="selectProffersor($event.target.value)">
+                                                    <option>Seleccione</option>
+                                                    <option [value]="proffesor.id" *ngFor="let proffesor of proffesors">
+                                                        {{proffesor.firstName}} {{proffesor.lastName}}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row pt-3">
+                                    <div class="col-md-8">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label><strong>Materias:</strong></label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <select style="width: 100%;"
+                                                    (change)="selectMatter($event.target.value)">
+                                                    <option>Seleccione</option>
+                                                    <option [value]="matter.id" *ngFor="let matter of matters" selected>
+                                                        {{matter.name}} - Grupo {{matter.group}}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="row">
+                                            <div class="col-md-7">
+                                                <label><strong>Hora de inicio:</strong></label>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <select style="width: 100%;" (change)="selectHour($event.target.value)">
+                                                    <option [value]="startHour" *ngIf="isClassDate" selected>
+                                                        {{startHour}}</option>
+                                                    <option value="6.45">6:45</option>
+                                                    <option value="8.15">8:15</option>
+                                                    <option value="9.45">9:45</option>
+                                                    <option value="11.15">11:15</option>
+                                                    <option value="12.45">12:45</option>
+                                                    <option value="14.15">14:15</option>
+                                                    <option value="15.45">15:45</option>
+                                                    <option value="17.15">17:15</option>
+                                                    <option value="18.45">18:45</option>
+                                                    <option value="20.15">20:15</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row pt-3 px-3" *ngIf="isMatterSelected">
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="row">
+                                                    <label><strong>Materias Seleccionadas:</strong></label>
+                                                </div>
+
+                                                <div class="row">
+                                                    <label>{{matterSelected?.name}} - Grupo
+                                                        {{matterSelected?.group}}</label>
+                                                </div>
+                                            </div>
+                                            <!-- <div class="col-md-1" (click)="deleteMatter(matterSelected)">
+                                                <img class="trash" src="../../../../assets/img/trash.png">
+                                            </div> -->
+                                            <div class="col-md-6">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <label><b>Motivo:</b></label>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <textarea cols="38" rows="5" placeholder="Motivo"
+                                                            [(ngModel)]="reason"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="row">
+                                    <div class="col-md-9"></div>
+                                    <div class="col-md-3">
+                                        <button class="btn btn-primary" (click)="next()"
+                                            [disabled]="!matterSelected">Siguiente</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" *ngIf="!isPartOne">
+                            <div class="row text-center pt-4">
+                                <div class="col-md-12">
+                                    <h2><b>Cantidad Requerida: {{capacityRequired}} Cantidad Total:
+                                            {{totalCapacity}}</b></h2>
+                                </div>
+                                <div class="col-md-12">
+                                    <h2><b>Aula a reservar: {{classromSelected.name}}</b></h2>
+                                </div>
+                            </div>
+                            <div class="row p-4" *ngIf="isClassAvailable">
+                                <div class="col-md-3">
+                                    <h3 style="color: #0099EE;"><b>Mi Aula:</b></h3>
+                                </div>
+                                <div class="col-md-3">
+                                    <button class="btn btn-classrom"
+                                        (click)="classroomSelected(myClassroom)">{{myClassroom.name}} |
+                                        {{myClassroom.capacity}}</button>
+                                </div>
+                            </div>
+                            <div class="row pl-4" *ngIf="normalClassRooms.length>0">
+                                <div class="col-md-12">
+                                    <h2 style="color: #0099EE;"><b>Aulas:</b></h2>
+                                </div>
+                            </div>
+                            <div class="row px-2" *ngIf="normalClassRooms.length>0">
+                                <div class="col-md-3 pb-2 text-center" *ngFor="let classrom of normalClassRooms">
+                                    <button class="btn btn-classrom"
+                                        (click)="classroomSelected(classrom)">{{classrom.name}} |
+                                        {{classrom.capacity}}</button>
+                                </div>
+                            </div>
+                            <div class="row pl-4" *ngIf="laboratories.length>0">
+                                <div class="col-md-12">
+                                    <h2 style="color: #0099EE;"><b>Laboratorios</b></h2>
+                                </div>
+                            </div>
+                            <div class="row px-2" *ngIf="laboratories.length>0">
+                                <div class="col-md-3 pb-2 text-center" *ngFor="let laboratory of laboratories">
+                                    <button class="btn btn-classrom"
+                                        (click)="classroomSelected(laboratory)">{{laboratory.name}} |
+                                        {{laboratory.capacity}}</button>
+                                </div>
+                            </div>
+                            <div class="row pl-4" *ngIf="auditoriums.length>0">
+                                <div class="col-md-12">
+                                    <h2 style="color: #0099EE;"><b>Auditorios:</b></h2>
+                                </div>
+                            </div>
+                            <div class="row px-2" *ngIf="auditoriums.length>0">
+                                <div class="col-md-6 pb-2 text-center" *ngFor="let auditory of auditoriums">
+                                    <button class="btn btn-classrom"
+                                        (click)="classroomSelected(auditory)">{{auditory.name}} |
+                                        {{auditory.capacity}}</button>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <button class="btn btn-primary" (click)="after()">Atras</button>
+                                    </div>
+                                    <div class="col-md-8"></div>
+                                    <div class="col-md-2">
+                                        <button class="btn btn-primary" (click)="bookClassroom()"
+                                            [disabled]="capacityRequired>=totalCapacity">Reservar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

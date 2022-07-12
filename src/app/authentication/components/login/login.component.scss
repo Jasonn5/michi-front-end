@@ -1,0 +1,46 @@
+//configuracion de texto
+h1 {
+    
+    color: #0068a1;
+    font-family: 'Roboto', sans-serif;
+}
+h3{
+    color: #0A72AE;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
+p{
+    color: #546E7A;
+    font-size:1.7rem;
+    font-weight: bold;
+}
+//Configuracion boton
+input{
+    border-radius: 15px;
+    width: 100%;
+    padding: 0.5rem;
+    background-color: #e9e8e8;
+    border-color: #e9e8e8;
+}
+button{
+    background-color: #0068A1;
+    color: #FFFFFF;
+    border-radius: 40px;
+    width: auto;
+    height: auto;
+    font-size:1.7rem;
+    font-weight: bold;
+    padding: 0.7rem;
+}
+//Configuracion imagen
+.img-principal{
+    width: 100%;
+    height: 100%;
+}
+.LogoFac{
+    width: 100%;
+    height: 10%;
+}
+.titulo-ini{
+    padding-bottom: 30px;
+}

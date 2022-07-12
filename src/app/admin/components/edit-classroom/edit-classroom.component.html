@@ -1,0 +1,44 @@
+<div class="row">
+    <app-sidebar class="col-md-3"></app-sidebar>
+    <div class="col-md-9">
+        <div class="contenedorCuerpo pt-5" id="contenidoPrincipal">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h2><b>Editar Ambiente</b></h2>
+                                <input type="text" [value]="classRoom.name" disabled>
+                                <select [(ngModel)]="classRoom.type" class="form-control"
+                                    style="margin-bottom: 1.5rem;">
+                                    <option [value]=1>Aula</option>
+                                    <option [value]=2>Laboratorio</option>
+                                    <option [value]=3>Auditorio</option>
+                                </select>
+                                <input type="number" [(ngModel)]="classRoom.capacity">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label style="font-size: 1.3rem;" class="pt-1"><strong>Estado</strong></label>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="checkbox" [(ngModel)]="classRoom.isEnabled"
+                                            [checked]="classRoom.isEnabled" />
+                                    </div>
+                                    <div class="col-md-3">                                        
+                                        <label style="font-size: 1.3rem;" class="pt-1">Activo</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 text-center">
+                                    <button class="btn btn-primary" [disabled]="classRoom.capacity<1"
+                                        (click)="saveChanges()">Guardar Cambios</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

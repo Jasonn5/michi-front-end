@@ -1,0 +1,44 @@
+<div class="modal-body">
+    <div class="row pt-4">
+        <div class="col-md-2">
+            <label class="mb-2"><b>Docente:</b></label>
+        </div>
+        <div class="col-md-10">
+            {{this.data.professor.firstName}} {{this.data.professor.lastName}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <label class="mb-2"><b>Materias:</b></label>
+        </div>
+        <div class="col-md-10">
+            <div class="row" *ngFor="let matter of this.data.matters" style="border-bottom: 2px solid black;">
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="mb-2">{{matter.name}}</label>
+                        </div>
+                        <div class="col-md-3" style="border-left: 2px solid black;">
+                            <label class="mb-2">Grupo: {{matter.group}}</label>
+                        </div>
+                        <div class="col-md-3" style="border-left: 2px solid black;">{{matter.numberStudents}} Est.</div>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="row" *ngFor="let schedules of matter.classroomSchedules">
+                        <div class="col-md-5" style="border-left: 2px solid black;">
+                            <label class="mb-2">{{schedules.day | schedule}} : {{schedules.startHour}} -
+                                {{schedules.endHour}}</label>
+                        </div>
+                        <div class="col-md-7" style="border-left: 2px solid black;">
+                            <label class="mb-2">{{schedules.classRoom.name}}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="close()">Cerrar</button>
+</div>

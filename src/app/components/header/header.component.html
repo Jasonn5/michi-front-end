@@ -1,0 +1,13 @@
+<ng-template [ngIf]="isHomeRoute()===true">
+    <!--Contenedores de la cabecera divididos en tecto e iconos de la derecha-->
+    <div id="cabecera">
+        <!--Contenedore derecho-->
+        <div id="textoCabecera"><strong>Sistema de asignación de aulas</strong></div>
+        <!--Contenedor Izquierdo-->
+        <div id="derechaCabecera">
+            <div id="cerrarSesion"><button id="botonCerrarSesion" (click)="logout()">CERRAR SESION</button></div>
+            <div id="iconoUsuario"><img src="./assets/img/iconoUsuario.png" height="25px"> </div>
+            <div id="nombreDocente">{{user}}</div>
+        </div>
+    </div>
+    </ng-template>

@@ -1,0 +1,60 @@
+<!--Barra Lateral derecha-->
+<div class="row">
+    <app-sidebar class="col-md-3"></app-sidebar>
+    <div class="col-md-9">
+        <div class="contenedorCuerpo" id="contenidoPrincipal">
+            <div class="row pt-5">
+                <div class="container">
+                    <div class="row pl-4 pb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="input-group-append col-md-2">
+                                                <button class="btn btn-outline-secondary" (click)="d1.toggle()"
+                                                    type="button" style="width: 100%; height: 2.5rem;">
+                                                    <img src="../../../../assets/img/calendar.png" style="width: 70%;">
+                                                </button>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input class="form-control" placeholder="dd-mm-yyyy"
+                                                    [(ngModel)]="startDate" ngbDatepicker #d1="ngbDatepicker"
+                                                    readonly="readonly" container="body" style="width: 100%;"
+                                                    (ngModelChange)="seeBookings(search)">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" class="search" placeholder="Docente" #searchRef>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="responsive-table">
+                        <li class="table-header row">
+                            <div style="float: left;width: 25%;text-align: center;">
+                                Docente
+                            </div>
+                            <div style="float: left;width: 10%;text-align: center;">Hora</div>
+                            <div style="float: left;width: 12%;text-align: center;">Aula</div>
+                            <div style="float: left;width: 20%;text-align: center;">Materia</div>
+                            <div style="float: left;width: 23%;text-align: center;">Motivo</div>
+                        </li>
+                        <li class="table-row row " *ngFor="let booking of bookings">
+                            <div style="float: left;width: 25%;text-align: center;">{{booking.matter.user.firstName}} {{booking.matter.user.lastName}}
+                            </div>
+                            <div style="float: left;width: 10%;text-align: center;">{{booking.startTime}} a {{booking.endTime}}</div>
+                            <div style="float: left;width: 12%;text-align: center;">{{booking?.classRoom.name}}</div>
+                            <div style="float: left;width: 20%;text-align: center;">{{booking.matter.name}} Grupo:
+                                {{booking.matter.group}}</div>
+                            <div style="float: left;width: 23%;text-align: center;">{{booking?.reason}}</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Etiqueta hr modificada para hacer linea de division de contenedor de izquierda y derecha-->
+</div>

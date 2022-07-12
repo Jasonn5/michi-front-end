@@ -1,0 +1,66 @@
+<!--Barra Lateral derecha-->
+<div class="row">
+    <app-sidebar class="col-md-3"></app-sidebar>
+    <div class="col-md-9">
+        <div class="contenedorCuerpo" id="contenidoPrincipal">
+            <div class="row pt-5" [ngStyle]="{'display': display}">
+                <div class="container">
+                    <ul class="responsive-table">
+                        <li class="table-header row">
+                            <div style="float: left;width: 40%; text-align: center;">
+                                <input type="text" class="search" placeholder="Nombre" #searchRef>
+                            </div>
+                            <div class="col-3">Correo</div>
+                            <div class="col-1">Ver Más</div>
+                            <div class="col-2">Reservas</div>
+                        </li>
+                        <li class="table-row row " *ngFor="let professor of professors">
+                            <div style="float: left;width: 25%;">{{professor.firstName}}</div>
+                            <div style="float: left;width: 25%;">{{professor.lastName}}</div>
+                            <div style="float: left;width: 26%;">{{professor.email}}</div>
+                            <div style="float: left;width: 12%; text-align: left; cursor: pointer;"
+                                (click)="seeMore(professor)"><img src="../../../../assets/img/view.png" width="20">
+                            </div>
+                            <div style="float: left;width: 12%; text-align: left; cursor: pointer;"
+                                (click)="seeBookings(professor)"><img src="../../../../assets/img/next.png" width="20">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row pt-5" *ngIf="!isPartOne">
+                <div class="container">
+                    <div class="row pl-4">
+                        <div class="col-md-10">
+                            <h2><b>{{professor.firstName}} {{professor.lastName}}</b></h2>
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-primary" (click)="back()">Atrás</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <ul class="responsive-table">
+                        <li class="table-header row">
+                            <div style="float: left;width: 12%;text-align: center;">Fecha</div>
+                            <div style="float: left;width: 10%;text-align: center;">Inicio</div>
+                            <div style="float: left;width: 10%;text-align: center;">Fin</div>
+                            <div style="float: left;width: 12%;text-align: center;">Ambiente</div>
+                            <div style="float: left;width: 28%;text-align: center;">Materia</div>
+                            <div style="float: left;width: 26%;text-align: center;">Motivo</div>
+                        </li>
+                        <li class="table-row row " *ngFor="let booking of bookings">                                
+                            <div style="float: left;width: 12%;text-align: center;">{{booking.date | date:'shortDate' }}</div>
+                            <div style="float: left;width: 10%;text-align: center;">{{booking.startTime}}</div>
+                            <div style="float: left;width: 10%;text-align: center;">{{booking.endTime}}</div>
+                            <div style="float: left;width: 12%;text-align: center;">{{booking?.classRoom.name}}</div>
+                            <div style="float: left;width: 28%;text-align: center;">{{booking.matter.name}} Grupo: {{booking.matter.group}}</div>
+                            <div style="float: left;width: 26%;text-align: center;">{{booking?.reason}}</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Etiqueta hr modificada para hacer linea de division de contenedor de izquierda y derecha-->
+</div>
